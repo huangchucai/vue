@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for循环</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="demo" >
+    <li v-for="(book,index) in lists">
+        {{index}}  {{book.price}}
+        <span v-for="(b,index) in book.name">{{b}} {{index}}</span>
+    </li>
+</div>
+
+    <script>
+new Vue({
+    el: '#demo',
+    data:{
+        lists: [
+        {name:['a','e','f'],price:50},
+        {name:['a'],price:50},
+        {name:['a','e'],price:50},
+        {name:['a','e','a','e'],price:50},
+        ]
+    } 
+})
+    </script>
+</body>
+</html>

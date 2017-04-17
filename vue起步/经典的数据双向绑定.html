@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据的双向绑定</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="demo">
+        <input type="text" placeholder="数据双向绑定" v-model='message'>
+        <input type="checkbox" placeholder="数据双向绑定" v-model='checked' id="checkbox">
+        <p>{{message}}</p>
+        <label for="checkbox">{{ checked }}</label>
+    </div>
+    <script>
+    new Vue({
+        el: "#demo",
+        data:{
+            message: '我是黄楚才',
+            checked: ''
+        }
+    })   
+    </script>
+</body>
+
+</html>

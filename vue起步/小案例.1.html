@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>小案例</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+</head>
+
+<body>
+    <div id="app">
+        <table class="table table-bordered">
+            <tr>
+                <th>序列号</th>
+                <th>名称</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>小计</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <th><input type="text"></th>
+                <td>1</td>
+                <td><button class="btn btn-primary">删除</button></td>
+            </tr>
+            <tr>
+                <td colspan='6'>总价格：4445551</td>
+            </tr>
+        </table>
+
+        <div class="container">
+            <div class="form-group">
+                <label for="" class="control-label">手机名</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">价格</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">数量</label>
+                <input type="text" class="form-control">
+            </div>
+            <button class="btn btn-block">添加</button>
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+         new Vue({
+             el: '#app',
+             data:{
+                phone:[
+                    {name:'三星',price:4000,count:1},
+                    {name:'nokia',price:200,count:1},
+                    {name:'华为',price:2000,count:1},
+                    {name:'小米',price:3000,count:1},
+                ]    
+             }
+         }
+         )   
+    </script>
+</body>
+
+</html>

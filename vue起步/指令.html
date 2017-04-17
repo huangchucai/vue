@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令化</title>
+    <style>
+    *{
+        margin: 0;
+        padding:  0; 
+    }
+        .hh{
+            height: 100px;
+            background: red;
+            overflow: hidden
+        }
+    </style>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="demo" :class='name' @click='showMessage($event)'>
+        {{message}}
+        {{true?'three':'two'}}
+    </div>
+    <div id="v-text">
+        <div v-html='html'></div>
+        <span v-text="msg"></span>
+        <!-- 和下面的一样 -->
+        <span>{{msg}}</span>
+    </div>
+    <script>
+       var str="<div>hello this is template</div>"  
+       new Vue({
+           el:"#demo",
+           data: {
+               name: 'hh',
+               message: '我是黄楚才',
+               msg: '这是v-text指令'
+           },
+           methods:{
+               showMessage(event){
+                   console.log(event)
+                   event.target.innerHTML+='<p>这是通过event加入的</p>'
+                   console.log(event.target)
+               }
+           }
+       })
+       new Vue({
+           el: '#v-text',
+           data:{
+               msg: '这是v-text指令',
+               html:'<div>fsfsfsfsfsdf</div>'
+           }
+       })
+    </script>
+</body>
+</html>

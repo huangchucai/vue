@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <style>
+        .hh{
+            height: 100px;
+            background: red;
+        }
+        .fontSize{
+            font-size: 50px
+        }
+    </style>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+    </div>
+    <script>
+       new Vue({
+           el:"#demo",
+           data: {
+               name: 'hh',
+               message: '我是黄楚才',
+               showStyle: true,
+               hideStyle: false
+           },
+           render(createElement){
+               return createElement(
+                   //元素
+                   "ul",
+                   //属性
+                   {
+                       'class':{
+                           hh:'{{showStyle}}',
+                           fontSize:false
+                       },
+                       attrs:{
+                           'data-img': 'hello',
+                            id : 'ul',
+                       },
+                       domProps:{
+                           innerHTML: "<span>这是domProps的权重大</span>"
+                       }     
+                   },
+                   //子元素
+                   [
+                       createElement("li",1),
+                       createElement("li",2),
+                       createElement("li",3)
+                   ]
+               )
+
+           },
+           methods:{
+               showMessage(){
+                   alert("ggggg")
+               }
+           }
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <style>
+        .hh{
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        {{message}}
+    </div>
+    <script>
+       new Vue({
+           el:"#demo",
+           data: {
+               name: 'hh',
+               message: '我是黄楚才',
+           },
+        //    template:'<div :class=name @click=showMessage>{{message}}hello this is template<span>heel</span></div>',
+          template:`<div :class=name @click=showMessage>
+                       {{message}}hello this is template
+                       <span>heel</span>
+                    </div>`,
+           methods:{
+               showMessage(){
+                   alert("ggggg")
+               }
+           }
+       })
+    </script>
+</body>
+</html>
