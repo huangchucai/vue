@@ -18,12 +18,28 @@
           <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
-      <div class="support-count" v-if="seller.supports">
+      <div class="support-count" v-if="seller.supports" @click="showDetail">
         <span class="count">{{seller.supports.length}}个</span>
         <i class="icon-keyboard_arrow_right"></i>
       </div>
     </div>
-    <div class="bulletin-wrapper"></div>
+    <div class="bulletin-wrapper" @click="showDetail" >
+      <span class="bulletin-title"></span><span class="bulletin-text">{{seller.bulletin}}</span>
+      <i class="icon-keyboard_arrow_right"></i>
+    </div>
+    <div class="background">
+      <img :src="seller.avatar" alt="logo" width="100%" height="100%">
+    </div>
+    <div class="detail" v-show="detailShow">
+      <div class="detail-wrapper clearfix">
+        <div class="detail-main">
+            <h1 class="name">{{seller.name}}</h1>
+        </div>
+      </div>
+      <div class="detail-close">
+        <i class="icon-close"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,6 +48,16 @@
     props: {
       seller: {
         type: Object
+      }
+    },
+    data() {
+      return {
+        detailShow: false
+      };
+    },
+    methods: {
+      showDetail() {
+        this.detailShow = true;
       }
     },
     created() {
@@ -44,8 +70,10 @@
   @import "../../common/stylus/mixin.styl";
 
   .header
-    background #999
+    position relative
     color #fff
+    background rgba(7,17,27,0.5)
+    overflow hidden
     .content-wrapper
       position relative
       font-size 0
@@ -103,7 +131,7 @@
       .support-count
         position absolute
         right 12px
-        bottom 18px
+        bottom 14px
         padding 0 8px
         height 24px
         line-height 24px
@@ -112,6 +140,71 @@
         text-align center
         .count
           font-size 10px
+          vertical-align top
         .icon-keyboard_arrow_right
+          line-height 24px
+          margin-left 2px
           font-size 10px
+    .bulletin-wrapper
+      position relative
+      height 28px
+      line-height 28px
+      padding 0px 22px 0px 12px
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
+      background-color rgba(7,17,27,0.2)
+      .bulletin-title
+        display inline-block
+        vertical-align top
+        width 22px
+        height 12px
+        bg-img('bulletin')
+        background-size 22px 12px
+        background-repeat no-repeat
+        margin-top 8px
+      .bulletin-text
+        vertical-align top
+        margin 0 4px
+        font-size 10px
+      .icon-keyboard_arrow_right
+        position absolute
+        font-size 10px
+        right 12px
+        top 10px
+    .background
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      z-index -1
+      filter blur(10px)
+    .detail
+      position fixed
+      z-index 100
+      top 0
+      left 0
+      width 100%
+      height 100%
+      overflow auto
+      background rgba(7,17,27,0.8)
+      .detail-wrapper
+        width 100%
+        min-height 100%
+       .detail-main
+          margin-top 64px
+          padding-bottom 64px
+         .name
+            line-height 16px
+            text-align center
+            font-size 16px
+            font-weight 700
+      .detail-close
+          position relative
+          width 32px
+          height 32px
+          margin -64px auto 0 auto
+          clear both
+          font-size 32px
 </style>
